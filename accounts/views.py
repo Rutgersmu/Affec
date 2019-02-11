@@ -1,9 +1,8 @@
-from django.conf import settings
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+import logging
 
-from accounts.models import Profile
-from .forms import SignupForm
+from django.conf import settings
+from django.shortcuts import render, redirect
+from .forms import SignupForm, ProfileForm
 
 
 # Create your views here.
@@ -20,19 +19,9 @@ def signup(request):
         'form': form,
     })
 
-@login_required
+
 def profile(request):
-    if request.method == 'GET':
-        profile = Profile.objects.get(user=request.user)
-        return render(request, 'account/profile.html', {
-            'profile': profile,
-        })
-    else:
-        pass
-
-
-def register(request):
-    if request.method == 'GET':
-        return render(request, 'account/register.html')
-    else:
-        request.POST
+    form = ProfileForm()
+    return render(request, 'account/profile.html', {
+        'form':form
+    })
