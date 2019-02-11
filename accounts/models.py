@@ -8,6 +8,8 @@ username_validator = UnicodeUsernameValidator()
 class User(AbstractUser):
     is_affector = models.BooleanField(default=False)
     name = models.CharField(max_length=20, verbose_name='이름')
+    nickname = models.CharField(max_length=20, verbose_name='nickname')
+
 
 
 class Profile(models.Model):
@@ -15,6 +17,7 @@ class Profile(models.Model):
     bio = models.TextField(blank=True)
     tag = models.CharField(max_length=50)
     email = models.EmailField()
+
 
 def on_post_save_for_user(sender, **kwargs):
     if kwargs['created']:

@@ -1,0 +1,11 @@
+id : {{ user }} <br>
+email : {{ user.email }} <br>
+name : {{ user.name }} <br>
+is_affector: {{ user.is_affector }} <br>
+{% if user.is_affector %}
+    bio : {{ profile.bio }} <br>
+    tag : {{ profile.tag }} <br>
+{% else %}
+    <a href="{% url 'register' %}">어펙터 등록하기</a>
+{% endif %}
+<a href="#">회원정보 수정하기</a>

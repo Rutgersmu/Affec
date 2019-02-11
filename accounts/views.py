@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from accounts.models import Profile
 from .forms import SignupForm
@@ -36,3 +36,13 @@ def register(request):
         return render(request, 'account/register.html')
     else:
         request.POST
+
+
+@login_required
+def user(request):
+    return render(request, 'account/user.html')
+
+
+@login_required
+def user_edit(request):
+    pass
