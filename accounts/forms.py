@@ -5,7 +5,7 @@ from accounts.models import User
 class SignupForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = UserCreationForm.Meta.fields + ('name', 'email', 'password1', 'password2')
+        fields = UserCreationForm.Meta.fields + ('name', 'email')
 
 class Register(forms.Form):
     pass
