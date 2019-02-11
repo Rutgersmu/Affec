@@ -9,7 +9,8 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('redirect/', lambda req: redirect('/')),
     path('profile/', views.profile, name='profile'),
-    path('register/', views.register, name='register')
+    path('register/', views.register, name='register'),
+    path('mypage/user/', views.user, name='user'),
 
 ]
 

@@ -1,8 +1,4 @@
 {% load static %}
-
-<!DOCTYPE HTML>
-
-
 <!--
 	Road Trip by TEMPLATED
 	templated.co @templatedco
@@ -21,6 +17,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
             integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
             crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="index.css">
     <title>Affectors</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -28,7 +25,6 @@
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
     <style>
-
         .login_button {
             width: 50%
         }
@@ -167,13 +163,37 @@
 </div>
 
 
+
+<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle2"
+
 <!-- Modal -->
 <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="signup"
+
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body">
                 <div style="text-align: center">
+
+                    <div>
+                    <form class="회원가입" method="POST" action="/accounts/signup/">
+                        {% csrf_token %}
+                        <p><label style="color: black; float: left;" for="id_login">아이디</label>
+                            <input type="text" name="login" placeholder="아이디" autofocus="autofocus" maxlength="50"
+                                   required="" id="id_signup" class="home_login_section"></p>
+                        <p><label style="color: black; float: left;" for="id_password">비밀번호</label> <input class="home_login_section" type="password" name="password"
+                                                                         placeholder="비밀번호" required=""
+                                                                         id="id_signup_password"></p>
+                        <p><label style="color: black; float: left;" for="id_password">비밀번호 확인</label> <input class="home_login_section" type="password" name="password"
+                                                                         placeholder="비밀번호" required=""
+                                                                         id="id_signup_passwordrpt"></p>
+{#                        <p><label style="color: black; float: left;" for="id_remember">아이디 저장:</label> <input type="checkbox" name="remember"#}
+{#                                                                           id="id_signup_remember"></p>#}
+
+                        <a class="button secondaryAction" href="/">취소</a>
+                        <button class="primaryAction" type="submit">가입하기</button>
+                    </form>
+
                     <div class="mb-3">
                         <div style="color: black; text-align: left !important;">아이디<input required id="signup_id" name="signup_id" type="text" /></div>
                         <div class="mt-2" style="color: black; text-align: left !important;">비밀번호<input required id="signup_password" name="signup_password" type="password" /></div>
@@ -183,11 +203,11 @@
                         <button onclick="signup()" class="btn btn-info mt-4" style="width: 220px;">가입하기</button>
                     </div>
                     <a href="/accounts/google/login/?process=login"><img class="login_button"
-                                                                         src="{% static 'core/images/google_login.png' %}"></a>
+                                                                         src="{% static 'core/images/google_login.png' %}" style="width: 60%"></a>
                     <a href="/accounts/naver/login/?process=login"><img class="login_button"
-                                                                        src="{% static 'core/images/naver_login.PNG' %}"></a>
+                                                                        src="{% static 'core/images/naver_login.PNG' %}" style="width: 60%"></a>
                     <a href="/accounts/kakao/login/?process=login"><img class="login_button"
-                                                                        src="https://developers.kakao.com/assets/img/about/logos/login/kr/kakao_account_login_btn_medium_narrow_ov.png"></a>
+                                                                        src="https://developers.kakao.com/assets/img/about/logos/login/kr/kakao_account_login_btn_medium_narrow_ov.png" style="width: 60%"></a>
                 </div>
             </div>
         </div>
@@ -277,7 +297,7 @@
 </section>
 
 <!-- Five -->
-<section id="four" class="wrapper post bg-img" data-bg="banner3.jpg">
+<section id="five" class="wrapper post bg-img" data-bg="banner3.jpg">
     <div class="inner">
         <article class="box">
             <header>

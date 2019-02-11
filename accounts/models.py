@@ -11,10 +11,12 @@ class User(AbstractUser):
     nickname = models.CharField(max_length=250)
 
 
+
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)
     tag = models.CharField(max_length=50)
+
 
 def on_post_save_for_user(sender, **kwargs):
     if kwargs['created']:

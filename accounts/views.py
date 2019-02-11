@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 
@@ -38,7 +39,17 @@ def register(request):
     if request.method == 'GET':
         return render(request, 'account/register.html')
     else:
-        pass
+        request.POST
+
+
+@login_required
+def user(request):
+    return render(request, 'account/user.html')
+
+
+@login_required
+def user_edit(request):
+    pass
 
 
 def accounts_login(request):
@@ -69,4 +80,5 @@ def accounts_signup(request):
         #     return HttpResponse('error')
     else:
         return HttpResponse('error')
+
 
