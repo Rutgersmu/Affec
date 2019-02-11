@@ -1,0 +1,283 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+
+
+<!--
+	Road Trip by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+            integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+            crossorigin="anonymous"></script>
+    <title>Affectors</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="../../static/core/assets/css/main.css"/>
+    <style>
+
+        .login_button {
+            width: 50%
+        }
+
+        .nav-bar-list {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+        }
+
+        .home_login_section {
+            color: black !important;
+        }
+
+        @media screen and (min-width: 900px) {
+            #menu2 {
+                display: none !important;
+            }
+        }
+
+        @media screen and (max-width: 900px) {
+            .nav-bar-desktop {
+                display: none;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- Header -->
+<header id="header">
+    <div class="logo"><a href="index.html">Affectors</a></div>
+    <div class="nav-bar-desktop">
+        <a class="nav-bar-list" href="#">어펙터스란?</a>
+        {% if request.user.is_authenticated %}
+            <a class="nav-bar-list" href="#">{{ request.user.username }}</a>
+            <a class="nav-bar-list" href="#">어펙터 등록</a>
+            <a class="nav-bar-list" href="/accounts/logout/" onclick="confirm('로그아웃 하시겠습니까?')">로그아웃</a>
+        {% else %}
+            <a class="nav-bar-list" href="#" data-toggle="modal" data-target="#exampleModalCenter">로그인</a>
+            <a class="nav-bar-list" href="#" data-toggle="modal" data-target="#exampleModalCenter2">회원가입</a>
+        {% endif %}
+    </div>
+    <a id="menu2" href="#menu"><span>Menu</span></a>
+</header>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div style="text-align: center">
+                    <form class="login" method="POST" action="/accounts/login/">
+                        {% csrf_token %}
+                        <p><label style="color: black; float: left;" for="id_login">아이디</label>
+                            <input type="text" name="login" placeholder="아이디" autofocus="autofocus" maxlength="50"
+                                   required="" id="id_login" class="home_login_section"></p>
+                        <p><label style="color: black; float: left;" for="id_password">비밀번호</label> <input class="home_login_section" type="password" name="password"
+                                                                         placeholder="비밀번호" required=""
+                                                                         id="id_password"></p>
+{#                        <p><label style="color: black; float: left;" for="id_remember">아이디 저장:</label> <input type="checkbox" name="remember"#}
+{#                                                                           id="id_remember"></p>#}
+
+                        <a class="button secondaryAction" href="/accounts/password/reset/">비밀번호를 잊으셨나요?</a>
+                        <button class="primaryAction" type="submit">로그인</button>
+                    </form>
+                    <a href="/accounts/google/login/?process=login"><img class="login_button"
+                                                                         src="{% static 'core/images/google_login.png' %}"></a>
+                    <a href="/accounts/naver/login/?process=login"><img class="login_button"
+                                                                        src="{% static 'core/images/naver_login.PNG' %}"></a>
+                    <a href="/accounts/kakao/login/?process=login"><img class="login_button" src="https://developers.kakao.com/assets/img/about/logos/login/kr/kakao_account_login_btn_medium_narrow_ov.png"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle2"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div style="text-align: center">
+                    <div>이메일로 회원가입</div>
+                    <a href="/accounts/google/login/?process=login"><img class="login_button"
+                                                                         src="{% static 'core/images/google_login.png' %}"></a>
+                    <a href="/accounts/naver/login/?process=login"><img class="login_button"
+                                                                        src="{% static 'core/images/naver_login.PNG' %}"></a>
+                    <a href="/accounts/kakao/login/?process=login"><img class="login_button"
+                                                                        src="https://developers.kakao.com/assets/img/about/logos/login/kr/kakao_account_login_btn_medium_narrow_ov.png"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Nav -->
+
+<nav id="menu">
+    <ul class="links">
+        <li><a href="affectors?">어펙터스란?</a></li>
+        <li><a href="register">어펙터 등록</a></li>
+        <li><a href="/accounts/login/">로그인</a></li>
+        <li><a href="elements.html">회원가입</a></li>
+    </ul>
+</nav>
+
+<!-- Banner -->
+<!--
+    Note: To show a background image, set the "data-bg" attribute below
+    to the full filename of your image. This is used in each section to set
+    the background image.
+-->
+<section id="banner" class="bg-img" data-bg="zhyu.jpeg">
+    <div class="inner">
+        <header>
+            <h1>We all are Affectors</h1>
+        </header>
+    </div>
+</section>
+
+<!-- One -->
+<section id="one" class="wrapper post bg-img" data-bg="banner2.jpg">
+    <div class="inner">
+        <article class="box">
+            <header>
+                <h2>새로운 것을 마주할 때<br>
+                    우리는 항상 아마추어 입니다.</h2>
+            </header>
+            <footer>
+            </footer>
+        </article>
+    </div>
+</section>
+
+<!-- Two -->
+<section id="two" class="wrapper post bg-img" data-bg="banner5.jpg">
+    <div class="inner">
+        <article class="box">
+            <header>
+                <h2>시간이 지나 능숙하게 되어서야<br>
+                    '그때 이렇게 하면 어땠을까' 라며<br>
+                    아쉬워 하곤 합니다.</h2>
+            </header>
+            <footer>
+            </footer>
+        </article>
+    </div>
+</section>
+
+<!-- Three -->
+<section id="three" class="wrapper post bg-img" data-bg="banner4.jpg">
+    <div class="inner">
+        <article class="box">
+            <header>
+                <h2>Affectos는 그런 후회가 들지 않도록<br>
+                    먼저 경험해본 사람들의 경험을 공유하고자 합니다.</h2>
+            </header>
+            <footer>
+            </footer>
+        </article>
+    </div>
+</section>
+
+<!-- Four -->
+<section id="four" class="wrapper post bg-img" data-bg="banner3.jpg">
+    <div class="inner">
+        <article class="box">
+            <header>
+                <h2>여러분의 크고 작은 모든 궁금증을 해소해 줄<br>
+                    Affector가 여기 있습니다.</h2>
+            </header>
+            <footer>
+            </footer>
+        </article>
+    </div>
+</section>
+
+<!-- Five -->
+<section id="four" class="wrapper post bg-img" data-bg="banner3.jpg">
+    <div class="inner">
+        <article class="box">
+            <header>
+                <h2>여러분에게 딱 맞는 Affector를 찾아보세요.</h2>
+            </header>
+            <footer>
+                <div class="content">
+                    <p>Affectors <a class="button alt" href="#">Fun</a>: 당신의 즐거움에 긍정적 영향<br>
+                        Affectors <a class="button alt" href="#">Life</a>: 당신의 삶에 긍정적 영향<br>
+                        Affectors <a class="button alt" href="#">Study</a>: 당신의 학습에 긍정적 영향<br>
+                        Affectors <a class="button alt" href="#">Emotion</a>: 당신의 감정에 긍정적 영향<br>
+                        Affectors <a class="button alt" href="#">Guitar</a>: 그 외 모든 것에 긍정적 영향</p>
+                </div>
+            </footer>
+        </article>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+
+        <h2>Contact Me</h2>
+
+        <form action="#" method="post">
+
+            <div class="field half first">
+                <label for="name">Name</label>
+                <input name="name" id="name" type="text" placeholder="Name">
+            </div>
+            <div class="field half">
+                <label for="email">Email</label>
+                <input name="email" id="email" type="email" placeholder="Email">
+            </div>
+            <div class="field">
+                <label for="message">Message</label>
+                <textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
+            </div>
+            <ul class="actions">
+                <li><input value="Send Message" class="button alt" type="submit"></li>
+            </ul>
+        </form>
+
+        <ul class="icons">
+            <li><a href="#" class="icon round fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="#" class="icon round fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="#" class="icon round fa-instagram"><span class="label">Instagram</span></a></li>
+        </ul>
+
+        <div class="copyright">
+            &copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a
+                href="https://unsplash.com">Unsplash</a>.
+        </div>
+
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="../../static/core/assets/js/jquery.min.js"></script>
+<script src="../../static/core/assets/js/jquery.scrolly.min.js"></script>
+<script src="../../static/core/assets/js/jquery.scrollex.min.js"></script>
+<script src="../../static/core/assets/js/skel.min.js"></script>
+<script src="../../static/core/assets/js/util.js"></script>
+<script src="../../static/core/assets/js/main.js"></script>
+
+</body>
+</html>

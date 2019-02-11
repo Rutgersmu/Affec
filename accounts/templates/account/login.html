@@ -1,0 +1,21 @@
+<div class="socialaccount_ballot">
+    <ul class="socialaccount_providers">
+        <li>
+            <a title="Google" class="socialaccount_provider google" href="/accounts/google/login/?process=login">Sign in with Google</a>
+        </li>
+        <li>
+            <a title="Naver" class="socialaccount_provider naver" href="/accounts/naver/login/?process=login">Sign in with Naver</a>
+        </li>
+        <li>
+            <a title="Kakao" class="socialaccount_provider kakao" href="/accounts/kakao/login/?process=login">Sign in with Kakao</a>
+        </li>
+    </ul>
+    <div class="login-or">or</div>
+</div>
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit">
+</form>

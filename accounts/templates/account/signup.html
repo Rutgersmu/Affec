@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="socialaccount_ballot">
+    <ul class="socialaccount_providers">
+        <li>
+            <a title="Google" class="socialaccount_provider google" href="/accounts/google/login/?process=login">Sign up with Google</a>
+        </li>
+        <li>
+            <a title="Naver" class="socialaccount_provider naver" href="/accounts/naver/login/?process=login">Sign up with Naver</a>
+        </li>
+        <li>
+            <a title="Kakao" class="socialaccount_provider kakao" href="/accounts/kakao/login/?process=login">Sign up with Kakao</a>
+        </li>
+    </ul>
+<div class="login-or">or</div>
+</div>
+
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+{#    <table>#}
+{#        <tr>#}
+{#            <th><label for="name">ID</label></th>#}
+{#            <td>#}
+{#                {{ signup_form.name }}#}
+{#            </td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <th><label for="password">PW</label></th>#}
+{#            <td>#}
+{#                {{ signup_form.password }}#}
+{#            </td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <th><label for="email">Email</label></th>#}
+{#            <td>#}
+{#                {{ signup_form.email }}#}
+{#            </td>#}
+{#        </tr>#}
+{#    </table>#}
+    <input type="submit" value="가입하기">
+</form>
+</body>
+</html>
