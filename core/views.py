@@ -4,8 +4,8 @@ from django.shortcuts import render
 def intro(request):
     return render(request, 'core/index.html')
 
-def fun(request):
-    return render(request, 'core/fun.html')
+def home(request):
+    return render(request, 'core/home.html')
 
 
 def query(request):
