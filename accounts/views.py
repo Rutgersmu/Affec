@@ -1,4 +1,10 @@
+import logging
+
 from django.conf import settings
+
+from django.shortcuts import render, redirect
+from .forms import SignupForm, ProfileForm
+
 from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import render, redirect, get_object_or_404
@@ -6,7 +12,8 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 
 from accounts.models import Profile, User
-from .forms import SignupForm
+
+
 
 
 
@@ -24,16 +31,13 @@ from .forms import SignupForm
 #         'form': form,
 #     })
 
-@login_required
-def profile(request):
-    if request.method == 'GET':
-        profile = Profile.objects.get(user=request.user)
-        return render(request, 'account/profile.html', {
-            'profile': profile,
-        })
-    else:
-        pass
 
+
+def profile(request):
+    form = ProfileForm()
+    return render(request, 'account/profile.html', {
+        'form':form
+    })
 
 def register(request):
     if request.method == 'GET':
@@ -80,5 +84,6 @@ def accounts_signup(request):
         #     return HttpResponse('error')
     else:
         return HttpResponse('error')
+
 
 
