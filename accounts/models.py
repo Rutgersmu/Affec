@@ -26,8 +26,6 @@ def on_post_save_for_user(sender, **kwargs):
         Profile.objects.create(user=user)
 
 
-post_save.connect(on_post_save_for_user, sender=settings.AUTH_USER_MODEL)
-
 class Desc(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     title = models.CharField(max_length=250)
